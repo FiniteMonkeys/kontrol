@@ -42,7 +42,7 @@ defmodule Kontrol.MixProject do
       {:credo, "~> 1.1", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0.0-rc.7", only: [:dev, :test], runtime: false},
       {:espec, "~> 1.8", only: :test},
-      {:ex_doc, "~> 0.21.2", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.22.5", only: [:dev, :test], runtime: false},
       {:pid_controller, "~> 0.1.2"},
       {:space_ex, "~> 0.8.0"}
     ]
