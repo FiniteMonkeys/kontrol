@@ -40,7 +40,7 @@ defmodule Kontrol.MixProject do
   defp deps do
     [
       {:credo, "~> 1.1", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.0.0-rc.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.1.0", only: [:dev, :test], runtime: false},
       {:espec, "~> 1.8", only: :test},
       {:ex_doc, "~> 0.21.2", only: [:dev, :test], runtime: false},
       {:pid_controller, "~> 0.1.2"},
