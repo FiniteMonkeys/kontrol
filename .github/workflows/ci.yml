@@ -1,0 +1,117 @@
+name: ci
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - name: install elixir and erlang
+        uses: erlef/setup-beam@v1
+        with:
+          version-file: .tool-versions
+          version-type: strict
+
+      - name: install hex and rebar3
+        run: |
+          mix local.hex --force
+          mix local.rebar --force
+
+      - name: install dependencies
+        run: |
+          mix deps.get
+
+      - name: compile code
+        run: |
+          mix compile
+
+      - name: run unit tests
+        run: |
+          mix test
+
+  credo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - name: install elixir and erlang
+        uses: erlef/setup-beam@v1
+        with:
+          version-file: .tool-versions
+          version-type: strict
+
+      - name: install hex and rebar3
+        run: |
+          mix local.hex --force
+          mix local.rebar --force
+
+      - name: install dependencies
+        run: |
+          mix deps.get
+
+      - name: run credo
+        run: |
+          mix credo
+
+  dialyzer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - name: install elixir and erlang
+        uses: erlef/setup-beam@v1
+        with:
+          version-file: .tool-versions
+          version-type: strict
+
+      - name: install hex and rebar3
+        run: |
+          mix local.hex --force
+          mix local.rebar --force
+
+      - name: install dependencies
+        run: |
+          mix deps.get
+
+      - name: run dialyzer
+        run: |
+          mix dialyzer
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - name: install elixir and erlang
+        uses: erlef/setup-beam@v1
+        with:
+          version-file: .tool-versions
+          version-type: strict
+
+      - name: install hex and rebar3
+        run: |
+          mix local.hex --force
+          mix local.rebar --force
+
+      - name: install dependencies
+        run: |
+          mix deps.get
+
+      - name: run unit tests
+        run: |
+          mix test
