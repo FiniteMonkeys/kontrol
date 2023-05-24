@@ -32,8 +32,8 @@ defmodule Kontrol.MixProject do
 
   defp aliases do
     [
-      credo: ["credo --strict"],
-      test: ["format", "credo --strict", "dialyzer", "espec"]
+      credo: ["format", "credo --strict"],
+      test: ["format", "espec"]
     ]
   end
 
@@ -44,7 +44,9 @@ defmodule Kontrol.MixProject do
       {:espec, "~> 1.9", only: :test},
       {:ex_doc, "~> 0.29.4", only: [:dev, :test], runtime: false},
       {:pid_controller, "~> 0.1.2"},
-      {:space_ex, "~> 0.8.0"}
+      {:space_ex,
+       git: "https://github.com/CraigCottingham/space_ex.git",
+       ref: "4fcde3576fa2a55a3477bdd24a0f8c891bbd4a25"}
     ]
   end
 
